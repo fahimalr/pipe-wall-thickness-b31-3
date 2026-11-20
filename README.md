@@ -15,7 +15,7 @@ case for the tests.
 - Schedule selection on **minimum** wall (nominal less mill tolerance), not nominal
 - MAWP of the selected schedule in the corroded condition
 - Hydrotest pressure from para. 345.4.2, including the `ST/S` temperature
-  correction and the check against yield at test temperature
+  correction, and the check against yield at test temperature (para. 345.2.1)
 - Single line from the command line, or a whole line list from a CSV
 
 ## Methods
@@ -27,7 +27,8 @@ case for the tests.
 | Thickness `t` | 304.1.2, eq. (3a) | `t = P D / [2 (S E W + P Y)]` |
 | Required `tm` | 304.1.1, eq. (2) | `c` = corrosion + erosion + thread or groove depth |
 | Mill tolerance | Material spec. | 12.5% default (A106, A53, API 5L seamless) |
-| Test pressure | 345.4.2 | `PT = 1.5 P ST/S`, `ST/S` capped at 6.5, reduced if stress would exceed yield |
+| Test pressure | 345.4.2, eq. (24) | `PT = 1.5 P ST/S`, `ST/S` capped at 6.5 |
+| Yield limit at test | 345.2.1(a) | Test pressure reduced if the stress on minimum wall would exceed yield |
 
 Units are SI: MPa(g), mm and deg C. The allowable stress file is kept in
 deg F and ksi so it can be compared line by line with Table A-1.
