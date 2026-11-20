@@ -79,8 +79,9 @@ def test_hydrotest_temperature_ratio():
     assert pt == pytest.approx(1.5 * 10.0 * 20.0 / 16.5)
 
 
-def test_hydrotest_ratio_capped():
-    assert pw.hydrotest_pressure(1.0, 10.0, 100.0) == pytest.approx(1.5 * 6.5)
+def test_hydrotest_not_below_1p5_design():
+    # allowable at test temperature lower than at design temperature
+    assert pw.hydrotest_pressure(2.0, 100.0, 90.0) == pytest.approx(3.0)
 
 
 def test_yield_limit_consistent_with_hoop_stress():
