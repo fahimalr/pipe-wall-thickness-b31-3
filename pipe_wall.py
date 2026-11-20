@@ -3,7 +3,8 @@ Straight pipe wall thickness and leak test pressure to ASME B31.3.
 
 Covers internal pressure design of straight pipe (para. 304.1.2, eq. 3a),
 selection of a B36.10M schedule, back-calculated MAWP and the hydrostatic
-test pressure of para. 345.4.2.
+test pressure of para. 345.4.2. Clause, table and equation numbers follow
+the 2024 edition.
 
 Units are SI throughout: MPa (gauge), mm, deg C.
 
@@ -106,7 +107,7 @@ def load_schedules(path=DATA_DIR / "pipe_schedules.csv"):
 # --- 304.1 Straight pipe under internal pressure ----------------------------
 
 _Y_TABLE = {
-    # Table 304.1.1, valid for t < D/6
+    # Table 304.1.1-1, valid for t < D/6
     "ferritic":   ([482.0, 510.0, 538.0], [0.4, 0.5, 0.7]),
     "austenitic": ([566.0, 593.0, 621.0], [0.4, 0.5, 0.7]),
 }
@@ -130,9 +131,9 @@ def pressure_design_thickness(p, od, s, e=1.0, w=1.0, y=0.4):
     p   internal design gauge pressure, MPa
     od  outside diameter, mm
     s   basic allowable stress at design temperature, MPa
-    e   quality factor (Table A-1A / A-1B)
+    e   quality factor (Table A-2 or A-3)
     w   weld joint strength reduction factor (302.3.5(e))
-    y   coefficient from Table 304.1.1
+    y   coefficient from Table 304.1.1-1
     """
     if p <= 0:
         raise ValueError("design pressure must be positive")
@@ -172,8 +173,8 @@ def select_schedule(nps, tm, schedules, mill_tol=MILL_TOL_DEFAULT):
 # --- 345 Leak testing ------------------------------------------------------
 
 def hydrotest_pressure(p, s_design, s_test):
-    """Para. 345.4.2, eq. (24): PT = 1.5 P ST / S, with ST/S not taken above 6.5."""
-    ratio = min(s_test / s_design, 6.5)
+    """Para. 345.4.2, eq. (24): PT = 1.5 P ST / S, and not less than 1.5 P."""
+    ratio = max(s_test / s_design, 1.0)
     return 1.5 * p * ratio
 
 
