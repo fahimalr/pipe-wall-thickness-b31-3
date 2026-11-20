@@ -23,12 +23,15 @@ case for the tests.
 | Step | Reference | Notes |
 |---|---|---|
 | Allowable stress `S` | Table A-1 | Linear interpolation between tabulated temperatures, no extrapolation |
-| Coefficient `Y` | Table 304.1.1 | Ferritic and austenitic steels, `t < D/6` |
+| Coefficient `Y` | Table 304.1.1-1 | Ferritic and austenitic steels, `t < D/6` |
 | Thickness `t` | 304.1.2, eq. (3a) | `t = P D / [2 (S E W + P Y)]` |
 | Required `tm` | 304.1.1, eq. (2) | `c` = corrosion + erosion + thread or groove depth |
 | Mill tolerance | Material spec. | 12.5% default (A106, A53, API 5L seamless) |
-| Test pressure | 345.4.2, eq. (24) | `PT = 1.5 P ST/S`, `ST/S` capped at 6.5 |
+| Test pressure | 345.4.2, eq. (24) | `PT = 1.5 P ST/S`, not less than `1.5 P` |
 | Yield limit at test | 345.2.1(a) | Test pressure reduced if the stress on minimum wall would exceed yield |
+
+Clause, table and equation numbers follow ASME B31.3-2024. Earlier editions
+number some of them differently.
 
 Units are SI: MPa(g), mm and deg C. The allowable stress file is kept in
 deg F and ksi so it can be compared line by line with Table A-1.
