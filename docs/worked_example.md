@@ -23,7 +23,7 @@ Table A-1 gives S = 20.0 ksi for A106 Gr. B at both 300 F and 400 F, so at
 
     S = 20.0 ksi = 137.9 MPa
 
-Table 304.1.1, ferritic steel at or below 482 C:
+Table 304.1.1-1, ferritic steel at or below 482 C:
 
     Y = 0.4
 
