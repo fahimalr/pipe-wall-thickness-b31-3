@@ -172,7 +172,7 @@ def select_schedule(nps, tm, schedules, mill_tol=MILL_TOL_DEFAULT):
 # --- 345 Leak testing ------------------------------------------------------
 
 def hydrotest_pressure(p, s_design, s_test):
-    """Para. 345.4.2(b): PT = 1.5 P ST / S, with ST/S not taken above 6.5."""
+    """Para. 345.4.2, eq. (24): PT = 1.5 P ST / S, with ST/S not taken above 6.5."""
     ratio = min(s_test / s_design, 6.5)
     return 1.5 * p * ratio
 
@@ -184,8 +184,8 @@ def hoop_stress(p, od, wall, y=0.4):
 
 def yield_limited_pressure(od, wall_min, yield_at_test, y=0.4):
     """Pressure at which the eq. (3a) stress reaches yield at test
-    temperature. Para. 345.4.2(c) allows the test pressure to be reduced
-    to this."""
+    temperature. Para. 345.2.1(a) allows the test pressure to be reduced
+    to this (345.4.2(c) in older editions)."""
     return 2.0 * wall_min * yield_at_test / (od - 2.0 * y * wall_min)
 
 
